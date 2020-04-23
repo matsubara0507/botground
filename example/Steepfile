@@ -1,0 +1,7 @@
+target :app do
+  signature "sig", "../assets/sig"
+
+  check "worker.rb"
+
+  library "botground"
+end

@@ -1,0 +1,12 @@
+module Sidekiq
+  def self.configure_server: () { (Sidekiq::Config) -> void } -> void
+  def self.configure_client: () { (Sidekiq::Config) -> void } -> void
+end
+
+module Sidekiq::Config
+  attr_accessor redis: { db: Integer }
+end
+
+module Sidekiq::Worker
+  def perform_async: (*untyped) -> void
+end

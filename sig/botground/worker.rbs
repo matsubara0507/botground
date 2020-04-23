@@ -1,0 +1,13 @@
+class BotGround::Worker
+  self.@client: BotGround::Client
+
+  def self.handlers: () -> Array[BotGround::_Handler]
+  def self.configure: () { (self) -> void } -> void
+  def self.client: () -> BotGround::Client
+  def self.client=: (BotGround::Client) -> void
+  def perform: (String channel, String user, String text) -> void
+
+  private
+
+  def find_router: (String) -> (nil | BotGround::Router)
+end

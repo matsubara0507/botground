@@ -1,0 +1,13 @@
+class BotGround::Event < Object
+  @client: BotGround::Client
+  @channel: String
+  @user: String
+  @text: String
+  @match_data: Array[(String | nil)]
+
+  def initialize: (BotGround::Client, String channel, String user, String text) -> void
+  def channel: () -> String
+  def sender: () -> String
+  def body: () -> String
+  def set_match_data: (Array[(String | nil)]) -> void
+end

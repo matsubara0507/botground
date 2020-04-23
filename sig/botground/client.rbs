@@ -1,0 +1,5 @@
+class BotGround::Client < Object
+  @slack_client: Slack::Web::Client
+
+  def initialize: (String token) -> void
+end

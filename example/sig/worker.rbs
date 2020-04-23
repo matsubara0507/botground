@@ -1,0 +1,5 @@
+class PongHandler < BotGround::Handler
+end
+
+class Worker < BotGround::Worker
+end

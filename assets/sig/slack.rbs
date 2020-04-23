@@ -1,0 +1,10 @@
+class Slack
+  def self.configure: () { (self) -> void } -> void
+  def self.token=: (String) -> void
+end
+
+module Slack::Web
+end
+
+class Slack::Web::Client < Object
+end

@@ -1,0 +1,20 @@
+class BotGround::Handler
+  def self.routers: () -> Array[BotGround::Router]
+  def self.find_router: (String) -> (nil | BotGround::Router)
+  def self.route:  (Regexp pattern, ^(BotGround::Event) -> void) -> BotGround::Router
+end
+
+interface BotGround::_Handler
+  def routers: () -> Array[BotGround::Router]
+  def find_router: (String) -> (nil | BotGround::Router)
+end
+
+class BotGround::Router < Object
+  @pattern: Regexp
+  @action: ^(BotGround::Event) -> void
+  @matched: (nil | MatchData)
+
+  def initialize: (Regexp pattern, ^(BotGround::Event) -> void) -> void
+  def match?: (String) -> bool
+  def handle: (BotGround::Event) -> void
+end
