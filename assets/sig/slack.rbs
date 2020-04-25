@@ -14,7 +14,7 @@ module Slack::Events
 end
 
 class Slack::Events::Request < Object
-  def initialize: (Net::HttpRequest) -> void
+  def initialize: (Net::HttpRequest, ?signing_secret: String?) -> void
   def body: () -> String
   def valid?: () -> bool
 end
