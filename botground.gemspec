@@ -23,5 +23,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency "sidekiq", ">= 6.0"
   spec.add_dependency "slack-ruby-client", ">= 0.14"
   spec.add_development_dependency "bundler", "< 3"
-  spec.add_development_dependency "steep"
 end

@@ -6,6 +6,18 @@ PATH
       sinatra (>= 2.0)
       slack-ruby-client (>= 0.14)
 
+PATH
+  remote: vendor/steep
+  specs:
+    steep (0.14.0)
+      activesupport (>= 5.1)
+      ast_utils (~> 0.3.0)
+      language_server-protocol (~> 3.14.0.1)
+      listen (~> 3.1)
+      parser (~> 2.7.0)
+      pry (~> 0.12.2)
+      rainbow (>= 2.2.2, < 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,14 +83,6 @@ GEM
       gli
       hashie
       websocket-driver
-    steep (0.14.0)
-      activesupport (>= 5.1)
-      ast_utils (~> 0.3.0)
-      language_server-protocol (~> 3.14.0.1)
-      listen (~> 3.1)
-      parser (~> 2.7.0)
-      pry (~> 0.12.2)
-      rainbow (>= 2.2.2, < 4.0)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -95,7 +99,7 @@ PLATFORMS
 DEPENDENCIES
   botground!
   bundler (< 3)
-  steep
+  steep!
 
 BUNDLED WITH
    2.1.4
