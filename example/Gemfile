@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "botground", path: "../"
 gem "sinatra", ">= 2.0"
 gem "sidekiq", ">= 6.0"
+gem "dotenv", ">= 2.7"
 
 group :development do
   gem "steep", path: "../vendor/steep"

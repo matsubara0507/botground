@@ -1,6 +1,7 @@
 require "sidekiq"
 require "sinatra/base"
 require "botground/client"
+require "dotenv/load"
 require "./worker.rb"
 
 Sidekiq.configure_client do |config|
@@ -8,7 +9,7 @@ Sidekiq.configure_client do |config|
 end
 
 Worker.configure do |config|
-  config.client = BotGround::Client.new("TOKEN")
+  config.client = BotGround::Client.new(ENV["SLACK_OAUTH_TOKEN"].to_s)
 end
 
 class API < Sinatra::Base

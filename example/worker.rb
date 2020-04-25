@@ -1,5 +1,6 @@
 require "sidekiq"
 require "botground"
+require "dotenv/load"
 
 Sidekiq.configure_server do |config|
   config.redis = { db: 1 }
@@ -25,5 +26,5 @@ class Worker < BotGround::Worker
 end
 
 Worker.configure do |config|
-  config.client = BotGround::Client.new("TOKEN")
+  config.client = BotGround::Client.new(ENV["SLACK_OAUTH_TOKEN"].to_s)
 end
