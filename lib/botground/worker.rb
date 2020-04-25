@@ -12,7 +12,11 @@ module BotGround
       []
     end
 
-    def self.configure
+    def self.configure_server
+      yield self
+    end
+
+    def self.configure_client
       yield self
     end
 
@@ -22,10 +26,6 @@ module BotGround
 
     def self.client=(client)
       @client = client
-    end
-
-    def self.signing_secret
-      @signing_secret
     end
 
     def self.signing_secret=(signing_secret)
@@ -38,7 +38,7 @@ module BotGround
     end
 
     def self.enqueue(req, verify: true)
-      request = Slack::Events::Request.new(req, signing_secret: signing_secret)
+      request = Slack::Events::Request.new(req, signing_secret: @signing_secret)
       return {type: "error", value: "verification failed"} if verify && request.valid?
 
       payload = JSON.parse(request.body, symbolize_names: true)

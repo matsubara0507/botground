@@ -8,15 +8,18 @@ class BotGround::Worker
   include Sidekiq::Worker
   extend Sidekiq::Worker::ClassMethods
 
+  extend BotGround::_ServerConfig
+  extend BotGround::_ClientConfig
+
   self.@client: BotGround::Client
   self.@signing_secret: String?
 
-  def self.handlers: () -> Array[BotGround::_Handler]
-  def self.configure: () { (self) -> void } -> void
+  def self.configure_server: () { (BotGround::_ServerConfig) -> void } -> void
+  def self.configure_client: () { (BotGround::_ClientConfig) -> void } -> void
+
   def self.client: () -> BotGround::Client
-  def self.client=: (BotGround::Client) -> void
-  def self.signing_secret: () -> String?
-  def self.signing_secret=: (String?) -> void
+
+  def self.handlers: () -> Array[BotGround::_Handler]
   def self.enqueue: (BotGround::HTTPRequest req, ?verify: bool) -> {:type => String, value: untyped}
   def perform: (String channel, String user, String text) -> void
 
@@ -24,4 +27,12 @@ class BotGround::Worker
 
   def find_router: (String) -> (nil | BotGround::Router)
   def self.get_event_info: (untyped) -> [String, String, String]
+end
+
+interface BotGround::_ServerConfig
+  def client=: (BotGround::Client) -> void
+end
+
+interface BotGround::_ClientConfig
+  def signing_secret=: (String?) -> void
 end

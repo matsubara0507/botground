@@ -2,10 +2,6 @@ require "sidekiq"
 require "botground"
 require "dotenv/load"
 
-Sidekiq.configure_server do |config|
-  config.redis = { db: 1 }
-end
-
 class PongHandler < BotGround::Handler
   def self.routers
     [
@@ -38,7 +34,10 @@ class Worker < BotGround::Worker
   end
 end
 
-Worker.configure do |config|
+Sidekiq.configure_server do |config|
+  config.redis = { db: 1 }
+end
+
+Worker.configure_server do |config|
   config.client = BotGround::Client.new(ENV["SLACK_OAUTH_TOKEN"].to_s)
-  config.signing_secret = ENV["SLACK_SIGNING_SECRET"].to_s
 end
