@@ -8,7 +8,7 @@ class BotGround::Worker
   def self.configure: () { (self) -> void } -> void
   def self.client: () -> BotGround::Client
   def self.client=: (BotGround::Client) -> void
-  def self.enqueue: (Net::HttpRequest req, ?verify: bool) -> (nil | {challenge: String} | {jid: Integer})
+  def self.enqueue: (Net::HttpRequest req, ?verify: bool) -> {:type => String, value: untyped}
   def perform: (String channel, String user, String text) -> void
 
   private

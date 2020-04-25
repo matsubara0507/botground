@@ -13,15 +13,16 @@ end
 
 class API < Sinatra::Base
   post "/events", provides: :json do
-    case Worker.enqueue(request, verify: false)
-    in {challenge: code}
+    result = Worker.enqueue(request, verify: false)
+    case result[:type]
+    when "url_verification"
       content_type "text/plain"
-      code
-    in {jid: jid}
-      puts "success: #{jid}"
+      result[:value]
+    when "event_callback"
+      puts "success: #{result[:value]}"
       status 200
-    in err
-      puts "undefined: #{err}"
+    else
+      puts "undefined: #{result}"
       status 500
     end
   end

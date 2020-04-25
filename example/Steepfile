@@ -2,6 +2,7 @@ target :app do
   signature "sig", "../assets/sig"
 
   check "worker.rb"
+  check "config.ru"
 
   library "botground"
 end

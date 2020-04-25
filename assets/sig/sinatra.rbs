@@ -1,0 +1,10 @@
+module Sinatra
+end
+
+class Sinatra::Base
+  def self.call: (untyped) -> void
+  def self.post: (String, ?provides: untyped) { () -> void } -> void
+  def self.content_type: (String) -> void
+  def self.status: (Integer) -> void
+  def self.request: () -> Net::HttpRequest
+end

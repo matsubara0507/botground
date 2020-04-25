@@ -1,0 +1,14 @@
+extension Kernel (Rack)
+  def run: (untyped) -> void
+end
+
+module Rack
+end
+
+class Rack::Cascade
+  def initialize: (Array[_App]) -> void
+end
+
+interface _App
+  def call: (untyped) -> void
+end

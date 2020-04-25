@@ -31,18 +31,18 @@ module BotGround
 
     def self.enqueue(req, verify: true)
       request = Slack::Events::Request.new(req)
-      return nil if verify && request.valid?
+      return {type: "error", value: "verification failed"} if verify && request.valid?
 
       payload = JSON.parse(request.body, symbolize_names: true)
       case payload[:type]
       when "event_callback"
         channel, user, text = get_event_info(payload[:event])
-        return nil if channel.empty?
-        {jid: perform_async(channel, user, text)}
+        return {type: "error", value: "unsupported event type: #{payload[:event][:type]}"} if channel.empty?
+        {type: "event_callback", value: perform_async(channel, user, text)}
       when "url_verification"
-        return {challenge: payload[:challenge].to_s}
+        {type: "event_callback", value: payload[:challenge].to_s}
       else
-        return nil
+        {type: "error", value: "unsupported request type: #{payload[:type]}"}
       end
     end
 
