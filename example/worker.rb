@@ -17,10 +17,23 @@ class PongHandler < BotGround::Handler
   end
 end
 
+class EchoHandler < BotGround::Handler
+  def self.routers
+    [
+      route( /^echo\s+(.+)/, ->(event) do
+        event.log("echo")
+        text = event.matched_data_at(0)
+        event.reply(text.to_s) unless text.nil?
+      end),
+    ]
+  end
+end
+
 class Worker < BotGround::Worker
   def self.handlers
     [
       PongHandler,
+      EchoHandler,
     ]
   end
 end

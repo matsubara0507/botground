@@ -25,6 +25,10 @@ module BotGround
       @match_data = match_data
     end
 
+    def matched_data_at(idx)
+      @match_data[idx]
+    end
+
     def reply(message)
       @client.postMessage(message, channel: @channel)
     end
