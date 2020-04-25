@@ -40,7 +40,7 @@ module BotGround
         return {type: "error", value: "unsupported event type: #{payload[:event][:type]}"} if channel.empty?
         {type: "event_callback", value: perform_async(channel, user, text)}
       when "url_verification"
-        {type: "event_callback", value: payload[:challenge].to_s}
+        {type: "url_verification", value: payload[:challenge].to_s}
       else
         {type: "error", value: "unsupported request type: #{payload[:type]}"}
       end
