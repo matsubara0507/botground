@@ -1,0 +1,30 @@
+name: Verify
+on:
+  pull_request: null
+  push:
+    branches:
+      - master
+jobs:
+  run:
+    name: Test
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        ruby-version: [2.7]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+
+      - name: Installe dependencies
+        run: bundle install
+      - name: Type check
+        run: bundle exec steep check
+
+      - name: Type check example
+        run: |
+          cd example
+          bundle install
+          bundle exec steep check
