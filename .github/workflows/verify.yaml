@@ -14,6 +14,8 @@ jobs:
         ruby-version: [2.7]
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
