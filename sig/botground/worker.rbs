@@ -1,4 +1,7 @@
 class BotGround::Worker
+  include Sidekiq::Worker
+  extend Sidekiq::Worker::ClassMethods
+
   self.@client: BotGround::Client
 
   def self.handlers: () -> Array[BotGround::_Handler]

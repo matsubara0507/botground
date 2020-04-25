@@ -21,7 +21,7 @@ module BotGround
     end
 
     def match?(text)
-      (@matched ||= @pattern.match(text)).nil?
+      !(@matched ||= @pattern.match(text)).nil?
     end
 
     def handle(event)

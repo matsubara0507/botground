@@ -8,7 +8,9 @@ end
 class PongHandler < BotGround::Handler
   def self.routers
     [
-      route(/^ping$/, ->(_) { puts "pong" }),
+      route(/^ping$/, ->(event) do
+        event.log("pong")
+      end),
     ]
   end
 end

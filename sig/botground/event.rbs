@@ -4,10 +4,12 @@ class BotGround::Event < Object
   @user: String
   @text: String
   @match_data: Array[(String | nil)]
+  @logger: Sidekiq::Logger?
 
-  def initialize: (BotGround::Client, String channel, String user, String text) -> void
+  def initialize: (BotGround::Client, String channel, String user, String text, ?logger: Sidekiq::Logger?) -> void
   def channel: () -> String
   def sender: () -> String
   def body: () -> String
   def set_match_data: (Array[(String | nil)]) -> void
+  def log: (String, ?level: Symbol) -> void
 end

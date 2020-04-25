@@ -8,5 +8,17 @@ module Sidekiq::Config
 end
 
 module Sidekiq::Worker
-  def perform_async: (*untyped) -> void
+  def logger: () -> Sidekiq::Logger
+end
+
+module Sidekiq::Worker::ClassMethods
+  def perform_async: (*untyped) -> Integer
+end
+
+class Sidekiq::Logger < Object
+  def debug: (String) -> void
+  def info: (String) -> void
+  def warn: (String) -> void
+  def error: (String) -> void
+  def fatal: (String) -> void
 end

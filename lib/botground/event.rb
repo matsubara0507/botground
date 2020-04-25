@@ -1,11 +1,12 @@
 module BotGround
   class Event
-    def initialize(client, channel, user, text)
+    def initialize(client, channel, user, text, logger: nil)
       @client = client
       @channel = channel
       @user = user
       @text = text
       @match_data = []
+      @logger = logger
     end
 
     def channel
@@ -22,6 +23,22 @@ module BotGround
 
     def set_match_data(match_data)
       @match_data = match_data
+    end
+
+    def log(text, level: :info)
+      return if @logger.nil?
+      case level
+      when :debug
+        @logger&.debug(text)
+      when :info
+        @logger&.info(text)
+      when :warn
+        @logger&.warn(text)
+      when :error
+        @logger&.error(text)
+      else
+        return
+      end
     end
   end
 end
