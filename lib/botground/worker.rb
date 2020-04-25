@@ -24,13 +24,21 @@ module BotGround
       @client = client
     end
 
+    def self.signing_secret
+      @signing_secret
+    end
+
+    def self.signing_secret=(signing_secret)
+      @signing_secret = signing_secret
+    end
+
     def perform(channel, user, text)
       event = Event.new(self.class.client, channel, user, text, logger: logger)
       find_router(text)&.handle(event)
     end
 
     def self.enqueue(req, verify: true)
-      request = Slack::Events::Request.new(req)
+      request = Slack::Events::Request.new(req, signing_secret: signing_secret)
       return {type: "error", value: "verification failed"} if verify && request.valid?
 
       payload = JSON.parse(request.body, symbolize_names: true)
@@ -63,6 +71,21 @@ module BotGround
       else
         ["", "", ""]
       end
+    end
+  end
+
+  class HTTPRequest
+    def initialize(headers: Hash.new, body: "")
+      @headers = headers
+      @body = body
+    end
+
+    def headers
+      @headers
+    end
+
+    def body
+      @body
     end
   end
 end

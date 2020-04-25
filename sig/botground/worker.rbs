@@ -1,14 +1,23 @@
+class BotGround::HTTPRequest
+  attr_reader headers: Hash[String, String]
+  attr_reader body: String
+  def initialize: (?headers: Hash[String, String], ?body: String) -> void
+end
+
 class BotGround::Worker
   include Sidekiq::Worker
   extend Sidekiq::Worker::ClassMethods
 
   self.@client: BotGround::Client
+  self.@signing_secret: String?
 
   def self.handlers: () -> Array[BotGround::_Handler]
   def self.configure: () { (self) -> void } -> void
   def self.client: () -> BotGround::Client
   def self.client=: (BotGround::Client) -> void
-  def self.enqueue: (Net::HttpRequest req, ?verify: bool) -> {:type => String, value: untyped}
+  def self.signing_secret: () -> String?
+  def self.signing_secret=: (String?) -> void
+  def self.enqueue: (BotGround::HTTPRequest req, ?verify: bool) -> {:type => String, value: untyped}
   def perform: (String channel, String user, String text) -> void
 
   private

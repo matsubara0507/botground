@@ -40,4 +40,5 @@ end
 
 Worker.configure do |config|
   config.client = BotGround::Client.new(ENV["SLACK_OAUTH_TOKEN"].to_s)
+  config.signing_secret = ENV["SLACK_SIGNING_SECRET"].to_s
 end

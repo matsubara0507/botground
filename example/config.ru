@@ -10,11 +10,12 @@ end
 
 Worker.configure do |config|
   config.client = BotGround::Client.new(ENV["SLACK_OAUTH_TOKEN"].to_s)
+  config.signing_secret = ENV["SLACK_SIGNING_SECRET"].to_s
 end
 
 class API < Sinatra::Base
   post "/events", provides: :json do
-    result = Worker.enqueue(request, verify: false)
+    result = Worker.enqueue(BotGround::HTTPRequest.new(headers: request.env, body: request.body))
     case result[:type]
     when "url_verification"
       content_type "text/plain"

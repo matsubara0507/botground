@@ -6,5 +6,10 @@ class Sinatra::Base
   def self.post: (String, ?provides: untyped) { () -> void } -> void
   def self.content_type: (String) -> void
   def self.status: (Integer) -> void
-  def self.request: () -> Net::HttpRequest
+  def self.request: () -> Sinatra::Request
+end
+
+class Sinatra::Request
+  def env: () -> Hash[String, String]
+  def body: () -> String
 end
