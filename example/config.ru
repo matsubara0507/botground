@@ -24,7 +24,7 @@ class API < Sinatra::Base
       status 200
     else
       puts "undefined: #{result}"
-      status 500
+      status 200
     end
   end
 end
