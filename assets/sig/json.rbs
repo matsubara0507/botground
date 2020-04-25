@@ -1,0 +1,3 @@
+module JSON
+  def self.parse: (untyped, symbolize_names: bool) -> untyped
+end

@@ -10,6 +10,7 @@ class PongHandler < BotGround::Handler
     [
       route(/^ping$/, ->(event) do
         event.log("pong")
+        event.reply("pong")
       end),
     ]
   end

@@ -12,10 +12,18 @@ Worker.configure do |config|
 end
 
 class API < Sinatra::Base
-  post "/events" do
-    jid = Worker.perform_async("hoge", "fuga", "ping")
-    puts "success: #{jid}"
-    status 200
+  post "/events", provides: :json do
+    case Worker.enqueue(request, verify: false)
+    in {challenge: code}
+      content_type "text/plain"
+      code
+    in {jid: jid}
+      puts "success: #{jid}"
+      status 200
+    in err
+      puts "undefined: #{err}"
+      status 500
+    end
   end
 end
 

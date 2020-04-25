@@ -8,9 +8,11 @@ class BotGround::Worker
   def self.configure: () { (self) -> void } -> void
   def self.client: () -> BotGround::Client
   def self.client=: (BotGround::Client) -> void
+  def self.enqueue: (Net::HttpRequest req, ?verify: bool) -> (nil | {challenge: String} | {jid: Integer})
   def perform: (String channel, String user, String text) -> void
 
   private
 
   def find_router: (String) -> (nil | BotGround::Router)
+  def self.get_event_info: (untyped) -> [String, String, String]
 end

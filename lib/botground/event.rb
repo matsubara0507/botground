@@ -25,6 +25,10 @@ module BotGround
       @match_data = match_data
     end
 
+    def reply(message)
+      @client.postMessage(message, channel: @channel)
+    end
+
     def log(text, level: :info)
       return if @logger.nil?
       case level

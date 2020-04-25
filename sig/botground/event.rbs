@@ -11,5 +11,6 @@ class BotGround::Event < Object
   def sender: () -> String
   def body: () -> String
   def set_match_data: (Array[(String | nil)]) -> void
+  def reply: (String) -> void
   def log: (String, ?level: Symbol) -> void
 end
