@@ -23,9 +23,7 @@ jobs:
 #          ruby-version: ${{ matrix.ruby-version }}
 
       - name: Installe dependencies
-        run: |
-          bundle install
-          cd vendor/steep && ./bin/setup
+        run: bundle install
       - name: Type check
         run: bundle exec steep check
 
