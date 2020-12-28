@@ -11,5 +11,5 @@ end
 
 class Sinatra::Request
   def env: () -> Hash[String, String]
-  def body: () -> String
+  def body: () -> StringIO
 end
