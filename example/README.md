@@ -4,7 +4,12 @@
 
 ```
 $ bundle install
-$ cd ../vendor/steep && ./bin/setup && cd - # for type check with steep
+```
+
+## Type Check
+
+```
+$ bundle exec steep check
 ```
 
 ## Run

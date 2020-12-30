@@ -1,7 +1,3 @@
-extension Kernel (Rack)
-  def run: (untyped) -> void
-end
-
 module Rack
 end
 
@@ -11,4 +7,8 @@ end
 
 interface _App
   def call: (untyped) -> void
+end
+
+module Kernel : BasicObject
+  def run: (untyped) -> void
 end

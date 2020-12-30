@@ -75,7 +75,7 @@ module BotGround
   end
 
   class HTTPRequest
-    def initialize(headers: Hash.new, body: "")
+    def initialize(headers: Hash.new, body: StringIO.new(""))
       @headers = headers
       @body = body
     end

@@ -1,7 +1,7 @@
 class BotGround::HTTPRequest
   attr_reader headers: Hash[String, String]
-  attr_reader body: String
-  def initialize: (?headers: Hash[String, String], ?body: String) -> void
+  attr_reader body: StringIO
+  def initialize: (?headers: Hash[String, String], ?body: StringIO) -> void
 end
 
 class BotGround::Worker

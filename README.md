@@ -17,6 +17,5 @@ please see [example](example).
 
 ```
 $ bundle install
-$ cd vendor/steep && ./bin/setup && cd - # for type check with steep
 $ bundle exec steep check
 ```
