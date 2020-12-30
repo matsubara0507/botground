@@ -9,7 +9,7 @@ jobs:
     name: Test
     runs-on: ${{ matrix.operating-system }}
     container:
-      image: ruby:3.0-rc
+      image: ruby:3.0
     strategy:
       matrix:
         operating-system: [ubuntu-latest]
