@@ -39,8 +39,11 @@ GEM
     multipart-post (2.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
+    nio4r (2.5.4)
     parser (2.7.2.0)
       ast (~> 2.4.1)
+    puma (5.1.1)
+      nio4r (~> 2.0)
     rack (2.2.2)
     rack-protection (2.0.8.1)
       rack
@@ -93,6 +96,7 @@ DEPENDENCIES
   botground!
   dotenv (>= 2.7)
   minitest (>= 5.14.2)
+  puma (>= 5.1.1)
   sidekiq (>= 6.0)
   sinatra (>= 2.0)
   steep (>= 0.39.0)
