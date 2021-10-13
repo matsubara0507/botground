@@ -57,7 +57,7 @@ GEM
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
-    puma (5.5.0)
+    puma (5.5.2)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-protection (2.1.0)
@@ -111,7 +111,7 @@ DEPENDENCIES
   botground!
   dotenv (>= 2.7)
   minitest (>= 5.14.2)
-  puma (>= 5.3.1)
+  puma (>= 5.5.1)
   sidekiq (>= 6.0)
   sinatra (>= 2.0)
   steep (= 0.46.0)

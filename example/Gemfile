@@ -5,7 +5,7 @@ gem "sinatra", ">= 2.0"
 gem "sidekiq", ">= 6.0"
 gem "dotenv", ">= 2.7"
 gem "minitest", ">= 5.14.2"
-gem "puma", ">= 5.3.1"
+gem "puma", ">= 5.5.1"
 
 group :development do
   gem "steep", "0.46.0"
