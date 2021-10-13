@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 3.0.0"
 
   spec.add_dependency "sinatra", ">= 2.0"
-  spec.add_dependency "sidekiq", ">= 6.0"
+  spec.add_dependency "sidekiq", ">= 6.2.1"
   spec.add_dependency "slack-ruby-client", ">= 0.14"
   spec.add_development_dependency "bundler", "< 3"
 end
