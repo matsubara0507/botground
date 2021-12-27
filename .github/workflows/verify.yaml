@@ -8,19 +8,17 @@ jobs:
   run:
     name: Test
     runs-on: ${{ matrix.operating-system }}
-    container:
-      image: ruby:3.0
     strategy:
       matrix:
         operating-system: [ubuntu-latest]
-        ruby-version: [2.7]
+        ruby-version: [3.1]
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
-#      - uses: actions/setup-ruby@v1
-#        with:
-#          ruby-version: ${{ matrix.ruby-version }}
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
 
       - name: Installe dependencies
         run: bundle install
